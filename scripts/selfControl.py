@@ -21,10 +21,6 @@ class Script(scripts.Script):
     allowedTimes = opts.Allowed_hours.split(",")
     current_time = str(datetime.datetime.now().hour)
 
-    print("Checking if you are allowed to generate")
-
-
-
     options = {               
                "0": opts.options00,
                "1": opts.options01,
@@ -60,13 +56,12 @@ class Script(scripts.Script):
     if not current_time in allowedTimes:
         print(f"The current hour is {current_time} and you are not allowed to generate")
         if opts.Shutdown_on_disallowed:
+            print("Shutting down")
             gr.Warning(f"The current hour is {current_time} and you are not allowed to generate")
             os._exit(0)
+
         else:
             gr.Warning(f"The current hour is {current_time}, you shoudn't be generating right now")
-
-    else:
-        print(f"The current hour is {current_time} and you are allowed to generate")
 
     pass
 
