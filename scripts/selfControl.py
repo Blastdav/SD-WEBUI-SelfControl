@@ -16,7 +16,7 @@ class Script(scripts.Script):
   def show(self, _is_img2img):
     return scripts.AlwaysVisible
 
-  def before_component(self, component, **kwargs):
+  def process(self, component, **kwargs):
     # if the current time is in the allowed hours of use, then print "allowed"
     # else print "not allowed"
     allowedTimes = opts.Allowed_hours.split(",")
