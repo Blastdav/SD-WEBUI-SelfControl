@@ -35,7 +35,7 @@ def on_ui_settings():
   section = ("Self control", NAME)
 
   settings_options = [
-    ("Allowed_hours","17,18,19,20,21,22,23,24","Allowed hours of use CSV of hour in 24 hour format (17,18,19)"),
+    ("Allowed_hours","17,18,19,20,21,22,23","Allowed hours of use CSV of hour in 24 hour format (17,18,19)"),
   ]
   
   for setting_name, *data in settings_options:
