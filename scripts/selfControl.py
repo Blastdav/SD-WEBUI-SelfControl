@@ -4,6 +4,7 @@ from modules import scripts, script_callbacks
 from modules.shared import opts, OptionInfo
 from modules.ui_components import FormRow, FormColumn, FormGroup, ToolButton
 import datetime
+import os
 
 NAME = "SD Self Control"
 
@@ -20,10 +21,14 @@ class Script(scripts.Script):
     # if the current time is in the allowed hours of use, then print "allowed"
     # else print "not allowed"
     allowedTimes = opts.Allowed_hours.split(",")
-    if datetime.datetime.now().hour in allowedTimes:
-        print("allowed")
+    current_time = str(datetime.datetime.now().hour)
+
+    if current_time in allowedTimes:
+        print(f"The time is {current_time} and you are allowed to generate\n")
     else:
-        print("not allowed")
+        print(f"The time is {current_time} and you are not allowed to generate\n")
+        os._exit(0)
+
 
 def on_ui_settings():
 
