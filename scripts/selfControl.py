@@ -30,7 +30,7 @@ class Script(scripts.Script):
         else:
             gr.Error(f"The current hour is {current_time}, you shoudn't be generating right now")
 
-    return
+    return component(**kwargs)
 
 def on_ui_settings():
 
