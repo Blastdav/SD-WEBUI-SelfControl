@@ -32,3 +32,6 @@ def on_ui_settings():
   settings_options = [
     ("Allowed_hours","17,18,19,20,21,22,23,24","Allowed hours of use CSV of hour in 24 hour format (17,18,19)"),
   ]
+  
+  for setting_name, *data in settings_options:
+    opts.add_option(setting_name, OptionInfo(*data, section=section))
