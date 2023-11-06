@@ -22,11 +22,10 @@ class Script(scripts.Script):
     allowedTimes = opts.Allowed_hours.split(",")
     current_time = str(datetime.datetime.now().hour)
 
-    if current_time in allowedTimes:
-        print(f"\nThe time is {current_time} and you are allowed to generate\n")
-    else:
-        print(f"\nThe time is {current_time} and you are not allowed to generate\n")
-        os._exit(0)
+    if not current_time in allowedTimes:
+        gr.Error(f"The current hour is {current_time} and you are not allowed to generate")
+        if opts.Shutdown_on_disallowed:
+            os._exit(0)
 
     return component(**kwargs)
 
@@ -36,6 +35,7 @@ def on_ui_settings():
 
   settings_options = [
     ("Allowed_hours","17,18,19,20,21,22,23","Allowed hours of use CSV of hour in 24 hour format (17,18,19)"),
+    ("Shutdown_on_disallowed","True","Shutdown when trying to generate during disallowed hours")
   ]
   
   for setting_name, *data in settings_options:
