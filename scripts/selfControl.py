@@ -23,13 +23,14 @@ class Script(scripts.Script):
     current_time = str(datetime.datetime.now().hour)
 
     if not current_time in allowedTimes:
+        print(f"The current hour is {current_time} and you are not allowed to generate")
         if opts.Shutdown_on_disallowed:
             gr.Error(f"The current hour is {current_time} and you are not allowed to generate")
             os._exit(0)
         else:
             gr.Error(f"The current hour is {current_time}, you shoudn't be generating right now")
 
-    return component(**kwargs)
+    #return component(**kwargs)
 
 def on_ui_settings():
 
