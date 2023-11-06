@@ -35,3 +35,5 @@ def on_ui_settings():
   
   for setting_name, *data in settings_options:
     opts.add_option(setting_name, OptionInfo(*data, section=section))
+
+script_callbacks.on_ui_settings(on_ui_settings)
