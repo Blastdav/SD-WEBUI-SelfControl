@@ -8,27 +8,27 @@ import os
 
 NAME = "SD Self Control"
 
+
 class Script(scripts.Script):
 
   def title(self):
     return NAME
 
-
   def show(self, _is_img2img):
     return scripts.AlwaysVisible
 
   def process(self, component, **kwargs):
-    # if the current time is in the allowed hours of use, then print "allowed"
-    # else print "not allowed"
+
     allowedTimes = opts.Allowed_hours.split(",")
     current_time = str(datetime.datetime.now().hour)
 
     if current_time in allowedTimes:
-        print(f"The time is {current_time} and you are allowed to generate\n")
+        print(f"\nThe time is {current_time} and you are allowed to generate\n")
     else:
-        print(f"The time is {current_time} and you are not allowed to generate\n")
+        print(f"\nThe time is {current_time} and you are not allowed to generate\n")
         os._exit(0)
 
+    return component(**kwargs)
 
 def on_ui_settings():
 
@@ -40,5 +40,6 @@ def on_ui_settings():
   
   for setting_name, *data in settings_options:
     opts.add_option(setting_name, OptionInfo(*data, section=section))
+
 
 script_callbacks.on_ui_settings(on_ui_settings)
