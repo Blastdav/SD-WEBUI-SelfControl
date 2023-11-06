@@ -37,7 +37,7 @@ def on_ui_settings():
 
   settings_options = [
     ("Allowed_hours","17,18,19,20,21,22,23","Allowed hours of use CSV of hour in 24 hour format (17,18,19)"),
-    ("Shutdown_on_disallowed","True","Shutdown when trying to generate during disallowed hours")
+    ("Shutdown_on_disallowed",True,"Shutdown when trying to generate during disallowed hours")
   ]
   
   for setting_name, *data in settings_options:
