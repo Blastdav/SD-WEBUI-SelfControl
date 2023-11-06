@@ -51,11 +51,12 @@ class Script(scripts.Script):
                "22": opts.options22,
                "23": opts.options23
                }
-    
-    for option in options:
-        if option[0]:
-            allowedTimes.append(option[1])
-       
+
+    allowedTimes = []
+    for key in options:
+        if options[key]:
+            allowedTimes.append(key)
+
     if not current_time in allowedTimes:
         print(f"The current hour is {current_time} and you are not allowed to generate")
         if opts.Shutdown_on_disallowed:
